@@ -9,6 +9,14 @@ interface SumateSectionProps {
     registerSection?: (section: CollaborationSection, element: HTMLDivElement | null) => void;
 }
 
+const sponsorshipOptions: ReadonlyArray<{ amount: number; url: string }> = [
+    { amount: 5000, url: 'https://mpago.la/1DVryuY' },
+    { amount: 10000, url: 'https://mpago.la/1rFVdpg' },
+    { amount: 15000, url: 'https://mpago.la/2P5gJkZ' },
+];
+
+const sponsorshipAmountFormatter = new Intl.NumberFormat('es-AR');
+
 // App cambia la key al navegar: reinicia el acordeón con el apartado de la URL.
 export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = 'padrino', registerSection }) => {
   // Estado para controlar qué sección del acordeón está desplegada
@@ -68,17 +76,34 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
             {openSection === 'padrino' && (
                 <div className="p-6 sm:p-8 border-t border-gray-100 bg-gray-50/40 space-y-6">
                 <p className="text-gray-600 text-base leading-relaxed max-w-3xl">
-                    <strong>Apadriná</strong> con un aporte mensual automático para sostener nuestras actividades de acompañamiento, recreación, talleres y festejos. A diferencia de una donación puntual, el apadrinamiento es recurrente.
+                    Elegí tu aporte para acompañar a Fundación Apapacho Con El Alma durante la permanencia de infancias y adolescencias en DCI.
                 </p>
                 
-                <div>
-                    <a 
-                    href="#donar-mercadopago" 
-                    className="inline-block bg-apapacho-green hover:bg-apapacho-darkgreen text-white font-extrabold text-lg px-10 py-3.5 rounded-full shadow-md transform hover:scale-105 transition-all"
-                    >
-                    APADRINÁ
-                    </a>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {sponsorshipOptions.map(({ amount, url }) => {
+                        const amountLabel = `$${sponsorshipAmountFormatter.format(amount)} ARS`;
+
+                        return (
+                            <div key={amount} className="bg-white p-6 rounded-2xl border border-gray-200 text-center space-y-4">
+                                <h4 className="text-2xl font-bold text-apapacho-green">
+                                    {amountLabel}
+                                </h4>
+                                <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={`Apadriná con ${amountLabel} (abre en otra pestaña)`}
+                                    className="inline-block w-full text-center bg-apapacho-green hover:bg-apapacho-darkgreen text-white font-extrabold text-lg px-4 py-3.5 rounded-full shadow-md transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-apapacho-darkgreen"
+                                >
+                                    APADRINÁ
+                                </a>
+                            </div>
+                        );
+                    })}
                 </div>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                    Antes de confirmar tu adhesión, revisá en Mercado Pago el importe, la frecuencia de cobro y las condiciones de la suscripción.
+                </p>
                 </div>
             )}
             </div>
