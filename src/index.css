@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  /* Tipografías */
+  --font-brand: "Fredoka", sans-serif;
+  --font-script: "Chewy", system-ui;
+
+  /* Colores */
+  --color-apapacho-green: #ea580c;
+  --color-apapacho-darkgreen: #c2410c;
+  --color-apapacho-orange: #ea580c;
+  --color-apapacho-yellow: #f59e0b;
+  --color-apapacho-red: #cb3527;
+  --color-apapacho-teal: #1fa0a8;
+  --color-apapacho-bg-gray: #f4f4f4;
+}
