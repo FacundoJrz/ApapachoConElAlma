@@ -1,5 +1,5 @@
 import React from 'react';
-import pinceladaSvg from '../../assets/pincelada.svg';
+import pinceladaSvg from '../../assets/Pincelada.svg';
 
 interface ConElAlmaBadgeProps {
     className?: string;
