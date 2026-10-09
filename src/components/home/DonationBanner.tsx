@@ -9,7 +9,7 @@ export const DonationBanner: React.FC = () => {
             </h2>
             
             <a
-            href="#donar"
+            href="#sumate/donaciones"
             className="bg-apapacho-darkgreen hover:bg-white hover:text-apapacho-darkgreen text-white font-extrabold px-8 py-3 rounded-full text-sm uppercase tracking-wider transition-all duration-300 shadow-md transform hover:scale-105 border-2 border-white"
             >
             DONÁ
