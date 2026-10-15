@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HeartHandshake, Gift, UserPlus, Building2, Award, ChevronDown, ChevronUp, MapPin, Clock, CheckCircle2, Send} from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
+import CollageConocenos from '../../assets/CollageSumateSection.jpg';
 
 export type CollaborationSection = 'padrino' | 'donaciones' | 'voluntario' | 'empresa' | 'embajador';
 
@@ -33,7 +34,7 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
         <section className="relative bg-gray-900 text-white py-24 sm:py-32 flex items-center justify-center overflow-hidden">
             <div 
             className="absolute inset-0 bg-cover bg-center opacity-35"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop')` }}
+            style={{backgroundImage: `url(${CollageConocenos})` }}
             />
             <div className="relative max-w-4xl mx-auto px-4 text-center z-10 space-y-4">
             <div className="inline-flex flex-col items-center">
@@ -156,7 +157,6 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
                     <ul className="space-y-2 text-xs sm:text-sm text-gray-600">
                         <li className="flex items-center space-x-2">⭐ <span>Juguetes didácticos y juegos de mesa</span></li>
                         <li className="flex items-center space-x-2">⭐ <span>Útiles escolares y cuadernos</span></li>
-                        <li className="flex items-center space-x-2">⭐ <span>Higiene personal (shampoo, jabón, cepillos)</span></li>
                         <li className="flex items-center space-x-2">⭐ <span>Insumos para festejos (cotillón, manteles)</span></li>
                         <li className="flex items-center space-x-2">⭐ <span>Libros infantiles y de cuentos</span></li>
                     </ul>
@@ -169,8 +169,7 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
                     </div>
                     <ul className="space-y-2 text-xs sm:text-sm text-gray-600">
                         <li className="flex items-center space-x-2">⭐ <span>Ropa de abrigo y calzado (varios talles)</span></li>
-                        <li className="flex items-center space-x-2">⭐ <span>Insumos de reposteria para cumpleaños</span></li>
-                        <li className="flex items-center space-x-2">⭐ <span>Pañales para bebés y niños pequeños</span></li>
+                        <li className="flex items-center space-x-2">⭐ <span>Insumos para cumpleaños</span></li>
                         <li className="flex items-center space-x-2">⭐ <span>Materiales de arte (hojas, temperas, pinceles)</span></li>
                     </ul>
                     </div>
@@ -256,7 +255,7 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
                     ¿Qué tipo de voluntariado querés hacer?
                     </h4>
                     <p className="text-gray-300 text-sm max-w-lg mx-auto">
-                    Comunicate con nosotros para agendar una primera entrevista en el área que desees colaborar.
+                    Comunicate con nosotros para agendar una primera entrevista.
                     </p>
                     <a 
                     href="https://wa.me/5493812155026?text=Hola,%20quiero%20sumarme%20como%20voluntario!" 
@@ -292,13 +291,13 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
                     <div className="space-y-3">
                     <h4 className="font-bold text-gray-900 text-base">¿Cuáles son los beneficios?</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                        Sumar a tu empresa como aliada potencia tu Responsabilidad Social Empresaria (RSE), impactando directamente en la calidad de vida de los niños de nuestra provincia y visibilizando el compromiso social de tu marca.
+                        Sumar a tu empresa como aliada potencia tu Responsabilidad Social Empresaria (RSE), impactando directamente en la calidad de vida de los niños, niñas y adolescentes de nuestra provincia y visibilizando el compromiso social de tu marca.
                     </p>
                     </div>
                     <div className="space-y-3">
                     <h4 className="font-bold text-gray-900 text-base">Modalidades de Alianza</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                        Podés colaborar mediante aportes corporativos periódicos, sponsoreo de eventos específicos (Navidad, Día de las Infancias), donación de productos o jornadas de voluntariado corporativo.
+                        Podés colaborar mediante aportes corporativos periódicos, sponsoreo de eventos específicos (Navidad, Día de las Infancias) o donación de productos.
                     </p>
                     </div>
                 </div>

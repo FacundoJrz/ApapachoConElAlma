@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ShieldCheck, MapPin, Users, HeartHandshake, BookOpen, PartyPopper, Megaphone, Sparkles } from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
+import CollageConocenos from '../../assets/CollageSumateSection.jpg';
 
 // Interfaces para el equipo
 interface BoardMember {
@@ -65,7 +66,7 @@ export const ConocenosSection: React.FC = () => {
         <section className="relative bg-gray-900 text-white py-24 sm:py-32 flex items-center justify-center overflow-hidden">
             <div 
             className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop')` }}
+            style={{ backgroundImage: `url(${CollageConocenos})`}}
             />
             <div className="relative max-w-4xl mx-auto px-4 text-center z-10 space-y-3">
             <div className="inline-flex flex-col items-center">
@@ -114,7 +115,7 @@ export const ConocenosSection: React.FC = () => {
             </div>
 
         {/* Misión y Objetivos */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="flex-col md:flex-row items-center justify-between gap-8">
             <div className="space-y-6">
                 <span className="text-apapacho-green font-bold text-sm uppercase tracking-wider">Nuestra Labor</span>
                 <h3 className="text-3xl font-extrabold text-gray-900">
@@ -126,31 +127,6 @@ export const ConocenosSection: React.FC = () => {
                 <p className="text-gray-600 leading-relaxed">
                 Lo hacemos a través de talleres de estimulación, apoyo escolar, espacio de recreación y el festejo permanente de fechas especiales: <em>cumpleaños, Día de las Infancias, Primavera, Navidad, Reyes y Carnaval</em>.
                 </p>
-            </div>
-
-          {/* Tarjetas de DCI acompañados */}
-            <div className="space-y-4">
-                <h4 className="text-lg font-bold text-gray-800 flex items-center space-x-2">
-                <MapPin size={20} className="text-apapacho-green" />
-                <span>DCI que acompañamos:</span>
-                </h4>
-
-                <div className="grid grid-cols-1 gap-3">
-                <div className="bg-white border-l-4 border-apapacho-green p-4 rounded-r-xl shadow-sm border border-gray-100">
-                    <h5 className="font-bold text-gray-900">DCI Yerba Buena</h5>
-                    <p className="text-xs text-gray-500">Acompañamiento integral, talleres de estimulación y apoyo.</p>
-                </div>
-
-                <div className="bg-white border-l-4 border-apapacho-red p-4 rounded-r-xl shadow-sm border border-gray-100">
-                    <h5 className="font-bold text-gray-900">DCI Barrio Sur (San Miguel de Tucumán)</h5>
-                    <p className="text-xs text-gray-500">Recreación, apoyo escolar y festejos comunitarios.</p>
-                </div>
-
-                <div className="bg-white border-l-4 border-apapacho-teal p-4 rounded-r-xl shadow-sm border border-gray-100">
-                    <h5 className="font-bold text-gray-900">DCI Tafí Viejo</h5>
-                    <p className="text-xs text-gray-500">Espacios de juego, contención y fortalecimiento.</p>
-                </div>
-                </div>
             </div>
             </div>
 

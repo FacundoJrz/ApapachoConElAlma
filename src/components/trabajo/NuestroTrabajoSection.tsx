@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Heart, BookOpen, Sparkles, PartyPopper, ChevronDown, ChevronUp, Play, Smile, HandHeart } from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
+import CollageConocenos from '../../assets/CollageSumateSection.jpg';
 
 interface ProgramDetail {
     id: string;
@@ -74,7 +75,7 @@ export const NuestroTrabajoSection: React.FC = () => {
         <section className="relative bg-gray-900 text-white py-24 sm:py-32 flex items-center justify-center overflow-hidden">
             <div 
             className="absolute inset-0 bg-cover bg-center opacity-35"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop')` }}
+            style={{ backgroundImage: `url(${CollageConocenos})`}}
             />
             <div className="relative max-w-4xl mx-auto px-4 text-center z-10 space-y-4">
             <div className="inline-flex flex-col items-center">
@@ -112,7 +113,7 @@ export const NuestroTrabajoSection: React.FC = () => {
                 Acompañar el tiempo de permanencia con amor y presencia
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                Trabajamos de forma voluntaria y articulada con los equipos de cada centro en <strong>Yerba Buena, Barrio Sur (Capital) y Tafí Viejo</strong>. Nos organizamos en comisiones especializadas para que cada visita sea un espacio de encuentro significativo.
+                Trabajamos de forma voluntaria y articulada con los equipos de cada dispositivo en <strong>Yerba Buena, Barrio Sur (Capital) y Tafí Viejo</strong>. Nos organizamos en comisiones especializadas para que cada visita sea un espacio de encuentro significativo.
                 </p>
                 <div className="space-y-3 pt-2">
                 <div className="flex items-start space-x-3">

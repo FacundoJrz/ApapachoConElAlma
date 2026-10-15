@@ -1,5 +1,5 @@
 import React from 'react';
-import portada from '../../assets/ApapachoPortada1.png'
+import portada from '../../assets/ApapachoPortada1.jpeg';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 
 export const Hero: React.FC = () => {
