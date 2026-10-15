@@ -3,6 +3,7 @@ import { ExternalLink, Heart, MessageCircle } from 'lucide-react';
 import { InstagramIcon, FacebookIcon } from '../commons/SocialIcons';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
+import collageSumateSection from '../../assets/CollageSumateSection.jpg';
 
 // URLs Oficiales
 const INSTAGRAM_URL = "https://www.instagram.com/fundacion_apapacho/";
@@ -98,7 +99,7 @@ export const NovedadesSection: React.FC = () => {
         <section className="relative bg-gray-900 text-white py-24 sm:py-32 flex items-center justify-center overflow-hidden">
             <div 
             className="absolute inset-0 bg-cover bg-center opacity-35"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop')` }}
+            style={{ backgroundImage: `url(${collageSumateSection})` }}
             />
             <div className="relative max-w-4xl mx-auto px-4 text-center z-10 space-y-4">
             <div className="inline-flex flex-col items-center">
