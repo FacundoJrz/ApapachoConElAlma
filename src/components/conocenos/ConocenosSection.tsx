@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, MapPin, Users, HeartHandshake, BookOpen, PartyPopper, Megaphone, Sparkles } from 'lucide-react';
+import { ShieldCheck, Users, HeartHandshake, BookOpen, PartyPopper, Megaphone, Sparkles } from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
 import CollageConocenos from '../../assets/CollageSumateSection.jpg';
