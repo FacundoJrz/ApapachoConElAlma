@@ -1,9 +1,10 @@
 import React from 'react';
-import { ExternalLink, Heart, MessageCircle } from 'lucide-react';
+import { ExternalLink, ImageOff } from 'lucide-react';
 import { InstagramIcon, FacebookIcon } from '../commons/SocialIcons';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
 import collageSumateSection from '../../assets/CollageSumateSection.jpg';
+import instagramFeed from '../../data/instagram.json';
 
 // URLs Oficiales
 const INSTAGRAM_URL = "https://www.instagram.com/fundacion_apapacho/";
@@ -11,64 +12,17 @@ const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61555260777900&ref
 
 interface SocialPost {
     id: string;
-    imageUrl: string;
+    imageUrl: string | null;
     caption: string;
-    likes: number;
-    comments: number;
     postUrl: string;
+    timestamp: string;
+    mediaType: string;
 }
 
-// Datos de publicaciones recientes de APAPACHO
-const instagramPosts: SocialPost[] = [
-    {
-        id: '1',
-        imageUrl: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=600&auto=format&fit=crop',
-        caption: '¡Festejando los cumpleaños del mes en el DCI Barrio Sur! 🎉🎂',
-        likes: 124,
-        comments: 18,
-        postUrl: INSTAGRAM_URL,
-    },
-    {
-        id: '2',
-        imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop',
-        caption: 'Taller de lectura y apoyo escolar semanal en Tafí Viejo 📚✨',
-        likes: 98,
-        comments: 12,
-        postUrl: INSTAGRAM_URL,
-    },
-    {
-        id: '3',
-        imageUrl: 'https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=600&auto=format&fit=crop',
-        caption: 'Tarde de juegos y recreación al aire libre ☀️🎨',
-        likes: 156,
-        comments: 24,
-        postUrl: INSTAGRAM_URL,
-    },
-    {
-        id: '4',
-        imageUrl: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&auto=format&fit=crop',
-        caption: 'Encuentro mensual de referentes y voluntarios 🫂🧡',
-        likes: 89,
-        comments: 9,
-        postUrl: INSTAGRAM_URL,
-    },
-    {
-        id: '5',
-        imageUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600&auto=format&fit=crop',
-        caption: 'Talleres de expresión artística en Yerba Buena 🧩🎨',
-        likes: 112,
-        comments: 15,
-        postUrl: INSTAGRAM_URL,
-    },
-    {
-        id: '6',
-        imageUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600&auto=format&fit=crop',
-        caption: 'Salida especial y paseo recreativo fuera de las residencias 🚌🥳',
-        likes: 175,
-        comments: 31,
-        postUrl: INSTAGRAM_URL,
-    },
-];
+const instagramPosts: SocialPost[] = instagramFeed.posts;
+const postDateFormatter = new Intl.DateTimeFormat('es-AR', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Argentina/Buenos_Aires',
+});
 
 const facebookPosts = [
     {
@@ -91,7 +45,12 @@ const facebookPosts = [
     },
 ];
 
-export const NovedadesSection: React.FC = () => {
+interface NovedadesSectionProps {
+    openDataDeletion?: boolean;
+    dataDeletionRef?: React.Ref<HTMLDetailsElement>;
+}
+
+export const NovedadesSection: React.FC<NovedadesSectionProps> = ({ openDataDeletion = false, dataDeletionRef }) => {
     return (
         <div className="w-full bg-white font-sans text-gray-800">
         
@@ -141,42 +100,81 @@ export const NovedadesSection: React.FC = () => {
             </a>
             </div>
 
-            {/* Grilla 3x2 idéntica al diseño de referencia */}
+            {instagramPosts.length === 0 && (
+                <p className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-sm text-gray-600">
+                    Por ahora podés ver nuestras últimas publicaciones directamente en{' '}
+                    <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-pink-700 underline focus-visible:outline-2 focus-visible:outline-offset-4">
+                        Instagram
+                    </a>.
+                </p>
+            )}
+
+            {/* Grilla adaptable de las últimas seis publicaciones reales */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {instagramPosts.map((post) => (
                 <a
                 key={post.id}
                 href={post.postUrl}
                 target="_blank"
-                rel="noreferrer"
-                className="group relative aspect-square rounded-2xl overflow-hidden bg-gray-100 border border-gray-200 shadow-xs hover:shadow-md transition-all"
+                rel="noopener noreferrer"
+                aria-label={`${post.caption || 'Publicación de Fundación Apapacho Con El Alma'} — ${postDateFormatter.format(new Date(post.timestamp))}. Ver en Instagram (abre otra pestaña)`}
+                className="group relative aspect-square rounded-2xl overflow-hidden bg-gray-100 border border-gray-200 shadow-xs hover:shadow-md transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-600"
                 >
-                <img 
-                    src={post.imageUrl} 
-                    alt={post.caption}
+                {post.imageUrl ? <img
+                    src={`${import.meta.env.BASE_URL}${post.imageUrl}`}
+                    alt={post.caption || 'Publicación de Fundación Apapacho Con El Alma'}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                /> : <div className="w-full h-full flex flex-col items-center justify-center gap-3 p-6 text-center text-gray-600">
+                    <ImageOff size={32} aria-hidden="true" />
+                    <span className="text-sm">Ver publicación en Instagram</span>
+                </div>}
 
                 {/* Overlay oscuro al pasar el cursor */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-between text-white">
+                <div className="absolute inset-0 bg-black/60 opacity-100 md:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity p-6 flex flex-col justify-between text-white">
                     <p className="text-xs font-medium line-clamp-3 leading-relaxed">
-                    {post.caption}
+                    {post.caption || 'Ver publicación en Instagram'}
                     </p>
 
-                    <div className="flex items-center space-x-4 text-xs font-bold pt-2 border-t border-white/20">
-                    <span className="flex items-center space-x-1">
-                        <Heart size={14} className="fill-white" />
-                        <span>{post.likes}</span>
-                    </span>
-                    <span className="flex items-center space-x-1">
-                        <MessageCircle size={14} className="fill-white" />
-                        <span>{post.comments}</span>
-                    </span>
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold pt-2 border-t border-white/20">
+                        <time dateTime={post.timestamp}>{postDateFormatter.format(new Date(post.timestamp))}</time>
+                        <ExternalLink size={14} aria-hidden="true" />
                     </div>
                 </div>
                 </a>
             ))}
             </div>
+        </section>
+
+        <section aria-label="Eliminación de datos de Instagram" className="px-4 sm:px-8 max-w-6xl mx-auto pb-8">
+            <details ref={dataDeletionRef} open={openDataDeletion} className="rounded-2xl border border-gray-200 bg-gray-50">
+                <summary className="cursor-pointer rounded-2xl p-5 sm:p-6 font-bold text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-600">
+                    Solicitar la eliminación de publicaciones de Instagram
+                </summary>
+                <div className="px-5 pb-6 sm:px-6 space-y-4 text-sm leading-relaxed text-gray-700">
+                    <p>
+                        Para solicitar la eliminación de publicaciones de Instagram de nuestra web escribinos a{' '}
+                        <a href="mailto:apapacho.aca@gmail.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20datos%20-%20ApapachoConElAlmaWeb" className="font-bold text-pink-700 underline break-all focus-visible:outline-2 focus-visible:outline-offset-4">
+                            apapacho.aca@gmail.com
+                        </a>.
+                    </p>
+                    <p>Usá el asunto «Solicitud de eliminación de datos - ApapachoConElAlmaWeb» e incluí:</p>
+                    <ul className="list-disc pl-5 space-y-2">
+                        <li>Tu nombre y el usuario de Instagram relacionado con la solicitud.</li>
+                        <li>El enlace a la publicación, si corresponde, y qué datos solicitás eliminar.</li>
+                        <li>Tu relación con la cuenta o el contenido para que podamos verificar la solicitud.</li>
+                    </ul>
+                    <p>No envíes contraseñas, tokens ni documentos de identidad.</p>
+                    <p>
+                        La solicitud se atiende manualmente. Una vez verificada, retiraremos los datos correspondientes que gestione esta integración, incluidas las copias de textos e imágenes publicadas en nuestra web. Si hace falta más información, te contactaremos por correo.
+                    </p>
+                    <p>Este procedimiento no elimina las publicaciones originales de Instagram, que se gestionan desde esa plataforma.</p>
+                    <a href="#novedades/eliminacion-datos" className="inline-block font-semibold text-pink-700 underline focus-visible:outline-2 focus-visible:outline-offset-4">
+                        Enlace directo a estas instrucciones
+                    </a>
+                </div>
+            </details>
         </section>
 
         {/* 3. Sección Feed Facebook */}

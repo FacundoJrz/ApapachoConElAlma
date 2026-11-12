@@ -19,10 +19,14 @@ type View = 'home' | 'conocenos' | 'trabajo' | 'sumate' | 'novedades';
 interface Route {
   view: View;
   section?: CollaborationSection;
+  dataDeletion?: boolean;
 }
 
 function resolveRoute(hash: string): Route {
   const normalized = hash.toLowerCase();
+  if (normalized === '#novedades/eliminacion-datos') {
+    return { view: 'novedades', dataDeletion: true };
+  }
   if (normalized.startsWith('#sumate/')) {
     const section = normalized.slice('#sumate/'.length);
     switch (section) {
@@ -55,6 +59,7 @@ function App() {
   const currentView = route.view;
   const sectionElements = useRef<Partial<Record<CollaborationSection, HTMLDivElement>>>({});
   const layoutElement = useRef<HTMLDivElement>(null);
+  const dataDeletionElement = useRef<HTMLDetailsElement>(null);
   const registerSection = useCallback((section: CollaborationSection, element: HTMLDivElement | null) => {
     if (element) sectionElements.current[section] = element;
     else delete sectionElements.current[section];
@@ -74,7 +79,7 @@ function App() {
 
   // El apartado ya está abierto cuando se mide su posición.
   useLayoutEffect(() => {
-    const target = route.section ? sectionElements.current[route.section] : undefined;
+    const target = route.dataDeletion ? dataDeletionElement.current : route.section ? sectionElements.current[route.section] : undefined;
     const headerHeight = layoutElement.current?.querySelector('header')?.getBoundingClientRect().height ?? 0;
     window.scrollTo({
       top: target ? Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 16) : 0,
@@ -101,7 +106,7 @@ function App() {
         {currentView === 'conocenos' && <ConocenosSection />}
         {currentView === 'trabajo' && <NuestroTrabajoSection />}
         {currentView === 'sumate' && <SumateSection key={route.section ?? 'general'} initialSection={route.section} registerSection={registerSection} />}
-        {currentView === 'novedades' && <NovedadesSection />}
+        {currentView === 'novedades' && <NovedadesSection key={route.dataDeletion ? 'eliminacion-datos' : 'general'} openDataDeletion={route.dataDeletion} dataDeletionRef={dataDeletionElement} />}
       </main>
       <Footer />
     </div>
