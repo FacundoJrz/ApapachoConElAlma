@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CONTACTO, crearEnlaceWhatsApp } from '../../config/contacto';
 import { HeartHandshake, Gift, UserPlus, Building2, Award, ChevronDown, ChevronUp, MapPin, Clock, CheckCircle2, Send} from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import CollageConocenos from '../../assets/CollageSumateSection.jpg';
@@ -190,7 +191,7 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
                         </div>
                     </div>
                     <a 
-                        href="https://wa.me/5493816399929" 
+                        href={crearEnlaceWhatsApp(CONTACTO.whatsappGeneral)}
                         target="_blank" 
                         rel="noreferrer"
                         className="block text-center bg-white border border-orange-300 text-apapacho-green font-bold text-xs py-2.5 rounded-xl hover:bg-orange-50 transition-colors"
@@ -258,7 +259,7 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
                     Comunicate con nosotros para agendar una primera entrevista.
                     </p>
                     <a 
-                    href="https://wa.me/5493812155026?text=Hola,%20quiero%20sumarme%20como%20voluntario!" 
+                    href={crearEnlaceWhatsApp(CONTACTO.whatsappVoluntarios, 'Hola, quiero sumarme como voluntario!')}
                     target="_blank" 
                     rel="noreferrer"
                     className="inline-block bg-apapacho-red hover:bg-red-700 text-white font-extrabold px-8 py-3 rounded-full transition-transform hover:scale-105"
@@ -304,7 +305,9 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
 
                 <div className="pt-4 border-t border-gray-200">
                     <a 
-                    href="mailto:apapacho.aca@gmail.com?subject=Alianza%20Empresarial" 
+                    href={crearEnlaceWhatsApp(CONTACTO.whatsappVoluntarios, 'Hola Apapacho! quiero ser parte del programa de empresas aliadas.')}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center space-x-2 text-sm font-bold text-teal-600 hover:text-teal-800 transition-colors"
                     >
                     <Send size={16} />
@@ -339,29 +342,19 @@ export const SumateSection: React.FC<SumateSectionProps> = ({ initialSection = '
                     </p>
                 </div>
 
-              {/* Formulario/Inscripción de Embajador (reemplaza a la indicación de descargar app) */}
+              {/* Contacto para el programa de embajadores */}
                 <div className="bg-white p-6 rounded-2xl border border-gray-200 space-y-4 max-w-xl">
                     <h5 className="font-bold text-gray-800 text-sm uppercase tracking-wider">
                     Inscribite como Embajador Digital
                     </h5>
-                    <form onSubmit={(e) => e.preventDefault()} className="space-y-3">
-                    <input 
-                        type="text" 
-                        placeholder="Nombre completo" 
-                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-blue-500"
-                    />
-                    <input 
-                        type="email" 
-                        placeholder="Correo electrónico" 
-                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-blue-500"
-                    />
-                    <button 
-                        type="submit" 
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-sm transition-colors"
+                    <a
+                        href={crearEnlaceWhatsApp(CONTACTO.whatsappVoluntarios, 'Hola Apapacho! me gustaría formar parte del programa de embajadores.')}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-full items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                     >
                         Quiero ser Embajador
-                    </button>
-                    </form>
+                    </a>
                 </div>
                 </div>
             )}

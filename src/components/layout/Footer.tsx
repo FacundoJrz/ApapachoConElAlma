@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { InstagramIcon, FacebookIcon } from '../commons/SocialIcons';
+import { CONTACTO, crearEnlaceCorreo } from '../../config/contacto';
 
 export const Footer: React.FC = () => {
     return (
@@ -21,11 +22,11 @@ export const Footer: React.FC = () => {
                 </p>
                 <p className="flex items-center space-x-2">
                 <Mail size={16} />
-                <span>apapacho.aca@gmail.com</span>
+                <span>{CONTACTO.correo}</span>
                 </p>
                 <p className="flex items-center space-x-2">
                 <Phone size={16} />
-                <span>+54 9 3816 39-9929</span>
+                <span>{CONTACTO.telefonoGeneralVisible}</span>
                 </p>
             </div>
         </div>
@@ -56,7 +57,7 @@ export const Footer: React.FC = () => {
             <div>
                 <h3 className="font-bold text-lg tracking-wide uppercase mb-3">REDES SOCIALES</h3>
                 <div className="flex space-x-4 text-white">
-                <a href="mailto:apapacho.aca@gmail.com" className="hover:text-amber-200">
+                <a href={crearEnlaceCorreo()} className="hover:text-amber-200">
                     <Mail size={20} />
                 </a>
                 <a href="https://www.instagram.com/fundacion_apapacho/" target="_blank" rel="noreferrer" className="hover:text-amber-200">

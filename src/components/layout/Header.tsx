@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {  Phone,  Mail, Menu, X} from "lucide-react";
 import ApapachoHome from "../../assets/ApapachoHome.png"
 import { InstagramIcon, FacebookIcon } from "../commons/SocialIcons";
+import { CONTACTO, crearEnlaceTelefono, crearEnlaceCorreo } from '../../config/contacto';
 
 
 interface NavItem {
@@ -48,15 +49,15 @@ export const Header: React.FC = () => {
           {/* Telefono y Redes Sociales */}
             <div className="flex items-center space-x-6">
                 <a
-                href="tel:+5493816399929"
+                href={crearEnlaceTelefono(CONTACTO.whatsappGeneral)}
                 className="flex items-center space-x-1 hover:text-apapacho-green transition-colors hidden sm:flex"
                 >
                 <Phone size={14} className="text-apapacho-green text-bold" />
-                <span>+54 9 3816 39-9929</span>
+                <span>{CONTACTO.telefonoGeneralVisible}</span>
                 </a>
                 <span className="text-gray-300">|</span>
                 <a
-                href="mailto:apapacho.aca@gmail.com"
+                href={crearEnlaceCorreo()}
                 aria-label="Email"
                 className="text-gray-600 hover:text-apapacho-green transition-colors"
                 >

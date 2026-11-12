@@ -1,4 +1,5 @@
 import React from 'react';
+import { CONTACTO, crearEnlaceCorreo } from '../../config/contacto';
 import { ExternalLink, ImageOff } from 'lucide-react';
 import { InstagramIcon, FacebookIcon } from '../commons/SocialIcons';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
@@ -155,8 +156,8 @@ export const NovedadesSection: React.FC<NovedadesSectionProps> = ({ openDataDele
                 <div className="px-5 pb-6 sm:px-6 space-y-4 text-sm leading-relaxed text-gray-700">
                     <p>
                         Para solicitar la eliminación de publicaciones de Instagram de nuestra web escribinos a{' '}
-                        <a href="mailto:apapacho.aca@gmail.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20datos%20-%20ApapachoConElAlmaWeb" className="font-bold text-pink-700 underline break-all focus-visible:outline-2 focus-visible:outline-offset-4">
-                            apapacho.aca@gmail.com
+                        <a href={crearEnlaceCorreo('Solicitud de eliminación de datos - ApapachoConElAlmaWeb')} className="font-bold text-pink-700 underline break-all focus-visible:outline-2 focus-visible:outline-offset-4">
+                            {CONTACTO.correo}
                         </a>.
                     </p>
                     <p>Usá el asunto «Solicitud de eliminación de datos - ApapachoConElAlmaWeb» e incluí:</p>
