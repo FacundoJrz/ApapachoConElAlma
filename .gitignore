@@ -29,3 +29,10 @@ dist-ssr
 /.agents/
 /README.md
 AGENTS.md
+
+# Capturas de referencia para el agente; no son recursos de la web.
+/src/assets/image.png
+/src/assets/image [0-9]*.png
+/src/assets/panel meta*.jpeg
+/src/assets/WhatsApp Image*.jpeg
+/src/assets/capturas/
