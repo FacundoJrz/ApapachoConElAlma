@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CONTACTO, crearEnlaceWhatsApp } from '../../config/contacto';
 import { HeartHandshake, Gift, UserPlus, Building2, Award, ChevronDown, ChevronUp, MapPin, Clock, CheckCircle2, Send} from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
-import CollageConocenos from '../../assets/CollageSumateSection.jpg';
+import CollageConocenos from '../../assets/CollageSumateSection.webp';
 
 export type CollaborationSection = 'padrino' | 'donaciones' | 'voluntario' | 'empresa' | 'embajador';
 

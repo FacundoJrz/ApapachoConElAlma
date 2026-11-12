@@ -4,7 +4,7 @@ import { ExternalLink, ImageOff } from 'lucide-react';
 import { InstagramIcon, FacebookIcon } from '../commons/SocialIcons';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
-import collageSumateSection from '../../assets/CollageSumateSection.jpg';
+import collageSumateSection from '../../assets/CollageSumateSection.webp';
 import instagramFeed from '../../data/instagram.json';
 
 // URLs Oficiales

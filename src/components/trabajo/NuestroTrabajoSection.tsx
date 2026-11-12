@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Heart, BookOpen, Sparkles, PartyPopper, ChevronDown, ChevronUp, Play, Smile, HandHeart } from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
-import CollageConocenos from '../../assets/CollageSumateSection.jpg';
+import CollageConocenos from '../../assets/CollageSumateSection.webp';
+import CollageAcompañar from '../../assets/Collage Recreación, juego y expresion.webp';
+import CollageApoyo from '../../assets/Collage Apoyo Escolar.webp';
+import CollageCumpleaños from '../../assets/Collage cumpleaños y salidas especiales.webp';
+import recreacion from '../../assets/Recreacion.jpg';
 
 interface ProgramDetail {
     id: string;
@@ -23,7 +27,7 @@ const programsData: ProgramDetail[] = [
         icon: <BookOpen className="text-apapacho-green" size={24} />,
         summary: 'Acompañamiento en tareas escolares y refuerzo de aprendizajes clave.',
         description: 'Nuestros voluntarios acompañan a niños, niñas y adolescentes durante su permanencia en los DCI mediante apoyo escolar y actividades de estimulación. Compartimos espacios de aprendizaje, escucha y afecto en el marco de sus derechos.',
-        imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop',
+        imageUrl: CollageApoyo,
         highlights: [
         'Apoyo escolar y acompañamiento en los aprendizajes',
         'Acompañamiento personalizado en tareas',
@@ -37,7 +41,7 @@ const programsData: ProgramDetail[] = [
         icon: <Sparkles className="text-amber-500" size={24} />,
         summary: 'Espacios de juego, recreación y talleres.',
         description: 'Compartimos actividades de juego, recreación y talleres con las infancias y adolescencias durante su permanencia en los DCI. Estos encuentros forman parte de nuestro acompañamiento voluntario desde la escucha y el afecto.',
-        imageUrl: 'https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=800&auto=format&fit=crop',
+        imageUrl: recreacion,
         highlights: [
         'Talleres y actividades de recreación',
         'Juegos cooperativos y dinámicas de integración',
@@ -51,7 +55,7 @@ const programsData: ProgramDetail[] = [
         icon: <PartyPopper className="text-apapacho-red" size={24} />,
         summary: 'Festejos de cumpleaños, fechas especiales y salidas recreativas.',
         description: 'Compartimos festejos de cumpleaños, Día de las Infancias, Primavera, Navidad, Reyes y Carnaval, entre otras fechas especiales. También realizamos salidas como parte del acompañamiento a las infancias y adolescencias.',
-        imageUrl: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=800&auto=format&fit=crop',
+        imageUrl:  CollageCumpleaños,
         highlights: [
         'Festejos de cumpleaños',
         'Eventos temáticos: Reyes, Navidad, Carnaval y Primavera',
@@ -129,7 +133,7 @@ export const NuestroTrabajoSection: React.FC = () => {
 
             <div className="relative rounded-3xl overflow-hidden shadow-lg border-4 border-white">
                 <img 
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop" 
+                src={CollageAcompañar}
                 alt="Niños sonriendo en taller recreativo" 
                 className="w-full h-80 sm:h-96 object-cover"
                 />
@@ -197,11 +201,11 @@ export const NuestroTrabajoSection: React.FC = () => {
                             ))}
                         </ul>
                         </div>
-                        <div className="rounded-xl overflow-hidden h-48 shadow-sm border border-gray-200">
+                        <div className="rounded-xl overflow-hidden shadow-sm border border-gray-200">
                         <img 
                             src={prog.imageUrl} 
                             alt={prog.title} 
-                            className="w-full h-full object-cover"
+                            className="w-full h-auto"
                         />
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ShieldCheck, Users, HeartHandshake, BookOpen, PartyPopper, Megaphone, Sparkles } from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
-import CollageConocenos from '../../assets/CollageSumateSection.jpg';
+import CollageConocenos from '../../assets/CollageSumateSection.webp';
 
 // Interfaces para el equipo
 interface BoardMember {
@@ -103,11 +103,11 @@ export const ConocenosSection: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-64 md:flex-shrink-0 text-center">
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100">
-                <span className="block text-xl sm:text-2xl font-black text-apapacho-green leading-tight break-words">Alrededor de 100</span>
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 flex flex-col items-center justify-center">
+                <span className="block text-xl sm:text-lg font-black text-apapacho-green leading-tight">Alrededor de 100</span>
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Voluntarios Activos</span>
                 </div>
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100">
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 flex flex-col items-center justify-center">
                 <span className="block text-3xl font-black text-apapacho-red">3</span>
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">DCI acompañados</span>
                 </div>

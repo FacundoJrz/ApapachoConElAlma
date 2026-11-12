@@ -1,5 +1,6 @@
 import React from 'react';
 import Niños from '../../assets/Niños.png'
+import apoyoEscolar from '../../assets/Collage Apoyo Escolar.webp'
 
 
 export const InfoBlocks: React.FC = () => {
@@ -53,7 +54,7 @@ export const InfoBlocks: React.FC = () => {
             <div className="relative flex justify-center order-2 md:order-1">
             <div className="w-full max-w-md h-80 sm:h-96 bg-gray-100 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                 <img 
-                src="/infancia-apapacho.jpg" 
+                src={apoyoEscolar}
                 alt="Acompañando a la infancia" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
