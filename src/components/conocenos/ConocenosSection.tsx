@@ -3,11 +3,16 @@ import { ShieldCheck, Users, HeartHandshake, BookOpen, PartyPopper, Megaphone, S
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
 import CollageConocenos from '../../assets/CollageSumateSection.webp';
+import Presidente from '../../assets/Presidente.png';
+import Secretaria from '../../assets/Secretaria.png';
+import Tesorera from '../../assets/Tesorera.png';
+import Vocal from '../../assets/PrimeraVocal.png';
 
 // Interfaces para el equipo
 interface BoardMember {
     name: string;
     role: string;
+    photo: string;
 }
 
 interface AreaReferent {
@@ -17,10 +22,10 @@ interface AreaReferent {
 }
 
 const boardMembers: BoardMember[] = [
-    { name: 'María Florencia Lafuente', role: 'Presidente' },
-    { name: 'Florencia Belén Rodríguez', role: 'Secretaria' },
-    { name: 'Paola Gómez', role: 'Tesorera' },
-    { name: 'Gabriela Juárez', role: 'Vocal' },
+    { name: 'María Florencia Lafuente', role: 'Presidente', photo: Presidente },
+    { name: 'Florencia Belén Rodríguez', role: 'Secretaria', photo: Secretaria },
+    { name: 'Paola Gómez', role: 'Tesorera', photo: Tesorera },
+    { name: 'Gabriela Juárez', role: 'Vocal', photo: Vocal },
 ];
 
 const referents: AreaReferent[] = [
@@ -179,9 +184,9 @@ export const ConocenosSection: React.FC = () => {
                     key={idx}
                     className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 text-center space-y-4 hover:shadow-md transition-shadow"
                 >
-                    <div className="w-28 h-28 mx-auto rounded-full bg-orange-100 flex items-center justify-center text-apapacho-green font-bold text-3xl border-4 border-white shadow-sm overflow-hidden">
+                    <div className="w-46 h-46 mx-auto rounded-full bg-orange-100 flex items-center justify-center text-apapacho-green font-bold text-3xl border-4 border-white shadow-sm overflow-hidden">
                     <img 
-                        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`} 
+                        src={member.photo} 
                         alt={member.name}
                         className="w-full h-full object-cover"
                     />

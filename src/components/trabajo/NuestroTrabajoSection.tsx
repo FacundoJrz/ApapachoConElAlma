@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Heart, BookOpen, Sparkles, PartyPopper, ChevronDown, ChevronUp, Play, Smile, HandHeart } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Heart, BookOpen, Sparkles, PartyPopper, ChevronDown, ChevronUp, Play, Pause, Smile, HandHeart } from 'lucide-react';
 import { ConElAlmaBadge } from '../commons/ConElAlmaBadge';
 import { DonationBanner } from '../home/DonationBanner';
 import CollageConocenos from '../../assets/CollageSumateSection.webp';
@@ -7,6 +7,7 @@ import CollageAcompañar from '../../assets/Collage Recreación, juego y expresi
 import CollageApoyo from '../../assets/Collage Apoyo Escolar.webp';
 import CollageCumpleaños from '../../assets/Collage cumpleaños y salidas especiales.webp';
 import recreacion from '../../assets/Recreacion.jpg';
+import VideoHorizontal from '../../assets/ApapachoVideoHorizontal.mp4';
 
 interface ProgramDetail {
     id: string;
@@ -67,6 +68,22 @@ const programsData: ProgramDetail[] = [
 export const NuestroTrabajoSection: React.FC = () => {
     const [openAccordion, setOpenAccordion] = useState<string | null>('apoyo-escolar');
     const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+
+    const toggleVideo = async () => {
+        const video = videoRef.current;
+        if(!video) return;
+
+        if(video.paused){
+            try {
+                await video.play();
+            } catch (error) {
+                console.error("No se pudo reproducir el video:", error);
+            }
+        } else {
+            video.pause();
+        }
+    };
 
     const toggleAccordion = (id: string) => {
         setOpenAccordion(openAccordion === id ? null : id);
@@ -220,46 +237,45 @@ export const NuestroTrabajoSection: React.FC = () => {
         <section className="py-16 px-6 sm:px-12 bg-gray-900 text-white">
             <div className="max-w-4xl mx-auto text-center space-y-8">
             <div className="space-y-2">
-                <span className="text-apapacho-yellow font-bold text-xs uppercase tracking-wider">Testimonios & Vivencias</span>
+                <span className="text-apapacho-yellow font-bold text-xs uppercase tracking-wider">Vivencias</span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold">
                 Historias en primera persona
                 </h2>
                 <p className="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
-                Conocé la voz de nuestros voluntarios y el impacto transformador de acompañar con el alma a las infancias.
+                Conocé más sobre nuestro trabajo y el impacto transformador de acompañar con el alma a las infancias.
                 </p>
             </div>
 
             {/* Reproductor de Video Mockup */}
             <div className="relative rounded-3xl overflow-hidden aspect-video bg-gray-800 border-4 border-gray-700 shadow-2xl flex items-center justify-center group">
-                <img 
-                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1000&auto=format&fit=crop" 
-                alt="Previsualización de video" 
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-40 transition-opacity"
+                <video 
+                    ref={videoRef}
+                    src={VideoHorizontal} 
+                    className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-40 transition-opacity"
+                    playsInline
+                    onPlay={()=> setIsVideoPlaying(true)}
+                    onPause={()=> setIsVideoPlaying(false)}
+                    onEnded={()=> setIsVideoPlaying(false)}
                 />
                 
-                <button 
-                onClick={() => setIsVideoPlaying(!isVideoPlaying)}
-                className="relative z-10 w-20 h-20 bg-apapacho-green text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform focus:outline-none"
-                aria-label="Reproducir testimonio"
-                >
-                <Play size={36} className="ml-1" fill="currentColor" />
+                <button
+                    onClick={toggleVideo}
+                    className={`relative z-10 w-20 h-20 bg-apapacho-green text-white rounded-full
+                        flex items-center justify-center shadow-lg hover:scale-110 transition-all
+                        focus:outline-none focus-visible:opacity-100
+                        ${
+                        isVideoPlaying
+                            ? 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto'
+                            : 'opacity-100'
+                        }`}
+                    aria-label={isVideoPlaying ? 'Pausar video' : 'Reproducir video'}
+                    >
+                    {isVideoPlaying
+                        ? <Pause size={36} fill="currentColor" />
+                        : <Play size={36} className="ml-1" fill="currentColor" />}
                 </button>
 
-                {isVideoPlaying && (
-                <div className="absolute inset-0 bg-black z-20 flex items-center justify-center p-4">
-                    <p className="text-center text-sm text-gray-300">
-                    🎬 <em>Aquí se cargará el reproductor de video de la fundación.</em>
-                    <br />
-                    <button 
-                        onClick={() => setIsVideoPlaying(false)} 
-                        className="mt-4 text-xs underline text-apapacho-yellow"
-                    >
-                        Cerrar vista previa
-                    </button>
-                    </p>
                 </div>
-                )}
-            </div>
             </div>
         </section>
 
